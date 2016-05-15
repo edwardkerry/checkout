@@ -7,7 +7,7 @@ describe 'Feature test' do
         co.scan('001')
         co.scan('002')
         co.scan('003')
-        expect(co.total).to equal(66.78)
+        expect(co.total).to eq(66.78)
       end
     end
     describe 'basket two' do
@@ -16,7 +16,7 @@ describe 'Feature test' do
         co.scan('001')
         co.scan('003')
         co.scan('001')
-        expect(co.total).to equal(36.95)
+        expect(co.total).to eq(36.95)
       end
     end
     describe 'basket three' do
@@ -26,7 +26,7 @@ describe 'Feature test' do
         co.scan('002')
         co.scan('001')
         co.scan('003')
-        expect(co.total).to equal(73.76)
+        expect(co.total).to eq(73.76)
       end
     end
   end

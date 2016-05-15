@@ -14,4 +14,12 @@ class Checkout
     @basket << item
   end
 
+  def total
+    cost = 0
+    @basket.each do |item|
+      cost += @prices[item]
+    end
+    cost
+  end
+
 end
