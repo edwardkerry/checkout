@@ -1,28 +1,31 @@
 describe Checkout do
 
-  let(:co) { described_class.new }
+  let(:item1) { double code:'001', name: 'Travel Card Holder', price: 925 }
+  let(:item2) { double code:'002', name: 'Personalised cufflinks', price: 4500 }
+  let(:catalogue) { [item1, item2] }
+  let(:co) { described_class.new(catalogue) }
 
   describe 'defaults' do
     it 'should initialize with a list of items' do
-      expect(co.prices).to eq({'001' => 9.25, '002' => 45.00, '003' => 19.95})
+      expect(co.catalogue).to eq([item1, item2])
     end
   end
 
   describe '#scan' do
     it 'should add a scanned item number to the basket' do
       co.scan('001')
-      expect(co.basket).to eq(['001'])
+      expect(co.basket).to eq({'001' => 1})
     end
     it 'should add multiple items to the basket' do
       co.scan('001')
       co.scan('002')
       co.scan('001')
-      expect(co.basket).to eq(['001', '002', '001'])
+      expect(co.basket).to eq({'001' => 2, '002' => 1})
     end
   end
 
   describe '#total' do
-    it 'should calculate the cost of the basket' do
+    it 'should calculate the cost of a standard basket' do
       co.scan('001')
       co.scan('002')
       expect(co.total).to eq(54.25)

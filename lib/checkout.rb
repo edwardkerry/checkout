@@ -1,25 +1,22 @@
 class Checkout
 
-  attr_reader :prices, :basket
+  attr_reader :catalogue, :basket
 
-  def initialize
-    @prices = { '001' => 9.25,
-                '002' => 45.00,
-                '003' => 19.95
-              }
-    @basket = []
+  def initialize(catalogue)
+    @catalogue = catalogue
+    @basket = {}
   end
 
-  def scan(item)
-    @basket << item
+  def scan(code)
+    @basket[code] ? @basket[code] += 1 : @basket[code] = 1
   end
 
   def total
     cost = 0
-    @basket.each do |item|
-      cost += @prices[item]
+    @catalogue.each do |item|
+      cost += item.price * @basket[item.code]
     end
-    cost
+    cost / 100.00
   end
 
 end
