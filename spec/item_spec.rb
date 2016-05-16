@@ -4,8 +4,8 @@ describe Item do
     load 'item.rb'
   end
 
-  let(:item1) { described_class.new('001', 'Travel Card Holder', '925')}
-  let(:item2) { described_class.new('002', 'Personalised cufflinks', '4500')}
+  let(:item1) { described_class.new('001', 'Travel Card Holder', 925)}
+  let(:item2) { described_class.new('002', 'Personalised cufflinks', 4500)}
 
   describe 'class variable @@catalogue' do
     it 'holds all class instances as an array of objects' do

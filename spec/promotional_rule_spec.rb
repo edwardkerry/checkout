@@ -1,15 +1,28 @@
 describe PromotionalRule do
 
-  let(:promorules) { described_class.new }
+  let(:ten_percent_discount) {double apply_discount: 10 }
+  let(:percent_discount_klass) { double new: ten_percent_discount}
+  let(:promorules) { described_class.new(percent_discount_klass) }
+
 
   describe 'defaults' do
-    it 'initialises with a hash to store the rules' do
-      expect(promorules.rules).to eq({})
+    it 'initialises with an array to store the rules' do
+      expect(promorules.rules).to eq([])
     end
-    # it 'sets a block of code to assess the discount' do
-    #   expect(rule1.discount).to eq(cost > 60.00 ? (cost / 10) : 0)
-    # end
   end
 
+  describe '#set_percentage_discount' do
+    it 'adds a new percent discount to the rules array' do
+      promorules.set_percentage_discount('6000', '10')
+      expect(promorules.rules).to eq([ten_percent_discount])
+    end
+  end
+  #
+  # describe "#set_multibuy_discount" do
+  #   it 'adds a new percent discount to the rules array' do
+  #     promorules.set_multibuy_discount('001', '2', '850')
+  #     expect(promorules.rules).to eq([multibuy_discount])
+  #   end
+  # end
 
 end

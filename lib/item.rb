@@ -7,7 +7,7 @@ class Item
   def initialize(code,name,price)
     @code = code
     @name = name
-    @price = price.to_i
+    @price = price
     @@catalogue << self
   end
 

@@ -3,7 +3,8 @@ describe Checkout do
   let(:item1) { double code:'001', name: 'Travel Card Holder', price: 925 }
   let(:item2) { double code:'002', name: 'Personalised cufflinks', price: 4500 }
   let(:item_klass) { double catalogue: [item1, item2] }
-  let(:co) { described_class.new(item_klass) }
+  let(:promo_rule) { double apply_discount: 0 }
+  let(:co) { described_class.new(item_klass, promo_rule) }
 
   describe '#scan' do
     it 'adds scanned item to the basket' do

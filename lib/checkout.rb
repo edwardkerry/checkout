@@ -2,8 +2,9 @@ class Checkout
 
   attr_reader :basket
 
-  def initialize(item_klass)
+  def initialize(item_klass, promo_rule)
     @catalogue = item_klass.catalogue
+    @promo_rule = promo_rule
     @basket = Hash.new(0)
   end
 
@@ -19,7 +20,8 @@ class Checkout
         cost += product.price * amount if product.code == item
       end
     end
-    cost / 100.00
+    discount = @promo_rule.apply_discount(cost)
+    (cost - discount) / 100.00.round(2)
   end
 
   private
