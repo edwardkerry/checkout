@@ -20,8 +20,8 @@ class Checkout
         cost += product.price * amount if product.code == item
       end
     end
-    discount = @promo_rule.apply_discount(cost)
-    (cost - discount) / 100.00
+    discount = @promo_rule.apply_discount(cost, basket)
+    ((cost - discount) / 100.00).round(2)
   end
 
   private

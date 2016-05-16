@@ -7,7 +7,7 @@ describe 'Feature test' do
 
   promo_rule = PromotionalRule.new(PercentageDiscount, MultibuyDiscount)
   promo_rule.set_percentage_discount(6000, 10)
-  promo_rule.set_multibuy_discount('001', 2, 850)
+  promo_rule.set_multibuy_discount('001', 2, 75)
 
   describe 'basket one' do
     it 'receives a discount for spending over £60' do

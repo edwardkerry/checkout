@@ -18,16 +18,17 @@ class PromotionalRule
   end
 
   def apply_discount(total, order)
-    apply_percentage_discount(total - apply_multibuy_discount(order))
+    apply_percentage_discount(total - apply_multibuy_discount(order)) +
+    apply_multibuy_discount(order)
   end
 
   private
 
   def apply_multibuy_discount(order)
     discount = 0
-      @multibuy_rules.each do |rule|
-        discount += rule.apply_discount(order)
-      end
+    @multibuy_rules.each do |rule|
+      discount += rule.apply_discount(order)
+    end
     discount
   end
 
