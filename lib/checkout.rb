@@ -21,7 +21,7 @@ class Checkout
       end
     end
     discount = @promo_rule.apply_discount(cost)
-    (cost - discount) / 100.00.round(2)
+    (cost - discount) / 100.00
   end
 
   private
