@@ -5,12 +5,6 @@ describe Checkout do
   let(:catalogue) { [item1, item2] }
   let(:co) { described_class.new(catalogue) }
 
-  describe 'defaults' do
-    it 'should initialize with a list of items' do
-      expect(co.catalogue).to eq([item1, item2])
-    end
-  end
-
   describe '#scan' do
     it 'should add a scanned item number to the basket' do
       co.scan('001')
@@ -24,7 +18,6 @@ describe Checkout do
     end
     it 'should only accept items that are in the catalogue' do
       expect{co.scan('bad_code')}.to raise_error('Unknown item code')
-      # co.scan('bad code')
     end
   end
 

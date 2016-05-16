@@ -1,6 +1,6 @@
 class Checkout
 
-  attr_reader :catalogue, :basket
+  attr_reader :basket
 
   def initialize(catalogue)
     @catalogue = catalogue
