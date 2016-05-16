@@ -23,7 +23,8 @@ describe Checkout do
       expect(co.basket).to eq({'001' => 2, '002' => 1})
     end
     it 'should only accept items that are in the catalogue' do
-      expect(co.scan('004')).to raise('Unknown item code')
+      expect{co.scan('bad_code')}.to raise_error('Unknown item code')
+      # co.scan('bad code')
     end
   end
 

@@ -8,6 +8,7 @@ class Checkout
   end
 
   def scan(code)
+    raise "Unknown item code" unless valid_item?(code)
     @basket[code] += 1
   end
 
@@ -19,6 +20,13 @@ class Checkout
       end
     end
     cost / 100.00
+  end
+
+  private
+
+  def valid_item?(code)
+    @catalogue.map {|product| product.code }
+      .include?(code)
   end
 
 end
