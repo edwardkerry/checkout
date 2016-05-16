@@ -23,11 +23,11 @@ describe PromotionalRule do
   end
 
   describe '#apply_discounts' do
-    it "calls each multibuy rule to calculate the discounts" do
+    xit "calls each multibuy rule to calculate the discounts" do
       allow(promorules.percent_rule).to receive(:calculate_discount).and_return(742)
       expect(promorules.apply_discounts(7420, order)).to eq(6678)
     end
-    it "calls percent rules to calculate the discounts" do
+    xit "calls percent rules to calculate the discounts" do
       promorules.set_percentage_discount('6000', '10')
       expect(promorules.percent_rule).to receive(:calculate_discount)
       promorules.apply_discounts(5000, order)
