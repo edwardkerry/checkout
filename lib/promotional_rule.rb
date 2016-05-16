@@ -1,11 +1,9 @@
-# class PromotionalRule
-#
-#   attr_reader :name
-#
-#   def initialize(name)
-#     @name = name
-#   end
-#
-#
-#
-# end
+class PromotionalRule
+
+  attr_reader :rules
+
+  def initialize
+    @rules = Hash.new(0)
+  end
+
+end
