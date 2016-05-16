@@ -2,8 +2,8 @@ class Checkout
 
   attr_reader :basket
 
-  def initialize(catalogue)
-    @catalogue = catalogue
+  def initialize(item_klass)
+    @catalogue = item_klass.catalogue
     @basket = Hash.new(0)
   end
 

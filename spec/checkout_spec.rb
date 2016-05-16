@@ -2,8 +2,8 @@ describe Checkout do
 
   let(:item1) { double code:'001', name: 'Travel Card Holder', price: 925 }
   let(:item2) { double code:'002', name: 'Personalised cufflinks', price: 4500 }
-  let(:catalogue) { [item1, item2] }
-  let(:co) { described_class.new(catalogue) }
+  let(:item_klass) { double catalogue: [item1, item2] }
+  let(:co) { described_class.new(item_klass) }
 
   describe '#scan' do
     it 'adds scanned item to the basket' do
