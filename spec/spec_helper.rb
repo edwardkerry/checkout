@@ -2,6 +2,7 @@ require 'checkout'
 require 'item'
 require 'promotional_rule'
 require 'percentage_discount'
+require 'multibuy_discount'
 require 'byebug'
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
