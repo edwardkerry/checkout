@@ -8,14 +8,14 @@ class MultibuyDiscount
     @discount_price = discount_price
   end
 
-  def apply_discount(order)
-    return calculate_discount(order) if order[@code] >= @quantity
+  def calculate_discount(order)
+    return discount_value(order) if order[@code] >= @quantity
     return 0
   end
 
   private
 
-  def calculate_discount(order)
+  def discount_value(order)
     order[@code] * @discount_price
   end
 

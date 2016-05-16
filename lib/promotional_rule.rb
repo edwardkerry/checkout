@@ -17,23 +17,21 @@ class PromotionalRule
     @multibuy_rules << @multibuy_discount.new(item_code, quantity, new_price)
   end
 
-  def apply_discount(total, order)
-    apply_percentage_discount(total - apply_multibuy_discount(order)) +
-    apply_multibuy_discount(order)
+  def apply_discounts(total, order)
+    apply_multibuy_discount(order) +
+    apply_percentage_discount(total - apply_multibuy_discount(order))
   end
 
   private
 
   def apply_multibuy_discount(order)
-    discount = 0
-    @multibuy_rules.each do |rule|
-      discount += rule.apply_discount(order)
+    @multibuy_rules.reduce(0) do |mb_discount, rule|
+      mb_discount + rule.calculate_discount(order)
     end
-    discount
   end
 
   def apply_percentage_discount(total)
-    @percent_rule ? @percent_rule.apply_discount(total) : total
+    @percent_rule ? @percent_rule.calculate_discount(total) : total
   end
 
 end

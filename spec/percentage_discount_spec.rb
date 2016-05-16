@@ -11,12 +11,12 @@ describe PercentageDiscount do
     end
   end
 
-  describe "#apply_discount" do
+  describe "#calculate_discount" do
     it 'reduces a number over the upper_limit by the percentage' do
-      expect(discount.apply_discount(10000)).to eq(1000)
+      expect(discount.calculate_discount(10000)).to eq(1000)
     end
     it 'does not reduce a number under the upper_limit' do
-      expect(discount.apply_discount(6000)).to eq(0)
+      expect(discount.calculate_discount(6000)).to eq(0)
     end
   end
 

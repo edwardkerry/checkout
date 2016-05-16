@@ -16,12 +16,12 @@ describe MultibuyDiscount do
     end
   end
 
-  describe '#apply_discount' do
+  describe '#calculate_discount' do
     it 'calculates a discount on multi-buy items' do
-      expect(discount.apply_discount(order1)).to eq(150)
+      expect(discount.calculate_discount(order1)).to eq(150)
     end
     it 'does not offer discounts on invalid items' do
-      expect(discount.apply_discount(order2)).to eq(0)
+      expect(discount.calculate_discount(order2)).to eq(0)
     end
   end
 

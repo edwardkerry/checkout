@@ -7,14 +7,14 @@ class PercentageDiscount
     @percent = percent
   end
 
-  def apply_discount(total)
-    return calculate_discount(total) if total > @upper_limit
+  def calculate_discount(total)
+    return discount_value(total) if total > @upper_limit
     return 0
   end
 
   private
 
-  def calculate_discount(total)
+  def discount_value(total)
     total / 100.00 * @percent
   end
 
