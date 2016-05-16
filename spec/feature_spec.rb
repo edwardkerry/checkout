@@ -8,7 +8,7 @@ describe 'Feature test' do
   context 'end to end feature testing' do
 
     describe 'basket one' do
-      it 'should cost 66.78' do
+      it 'receives a discount for spending over £60' do
         co = Checkout.new(catalogue)
         co.scan('001')
         co.scan('002')
@@ -18,7 +18,7 @@ describe 'Feature test' do
     end
 
     describe 'basket two' do
-      it 'should cost 36.95' do
+      it 'receives a discount for purchasing two travel card holders' do
         co = Checkout.new(catalogue)
         co.scan('001')
         co.scan('003')
@@ -28,7 +28,7 @@ describe 'Feature test' do
     end
 
     describe 'basket three' do
-      it 'should cost 73.76' do
+      it 'receives both discounts' do
         co = Checkout.new(catalogue)
         co.scan('001')
         co.scan('002')

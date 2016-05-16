@@ -6,23 +6,23 @@ describe Checkout do
   let(:co) { described_class.new(catalogue) }
 
   describe '#scan' do
-    it 'should add a scanned item number to the basket' do
+    it 'adds scanned item to the basket' do
       co.scan('001')
       expect(co.basket).to eq({'001' => 1})
     end
-    it 'should add multiple items to the basket' do
+    it 'adds multiple items to the basket' do
       co.scan('001')
       co.scan('002')
       co.scan('001')
       expect(co.basket).to eq({'001' => 2, '002' => 1})
     end
-    it 'should only accept items that are in the catalogue' do
+    it 'only accepts valid items' do
       expect{co.scan('bad_code')}.to raise_error('Unknown item code')
     end
   end
 
   describe '#total' do
-    it 'should calculate the cost of a standard basket' do
+    it 'returns the cost of a standard basket' do
       co.scan('001')
       co.scan('002')
       expect(co.total).to eq(54.25)
