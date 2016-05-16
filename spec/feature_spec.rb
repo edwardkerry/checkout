@@ -21,7 +21,7 @@ describe 'Feature test' do
       it 'should cost 36.95' do
         co = Checkout.new(catalogue)
         co.scan('001')
-        # co.scan('002')
+        co.scan('003')
         co.scan('001')
         expect(co.total).to eq(36.95)
       end

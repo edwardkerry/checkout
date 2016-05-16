@@ -4,17 +4,19 @@ class Checkout
 
   def initialize(catalogue)
     @catalogue = catalogue
-    @basket = {}
+    @basket = Hash.new(0)
   end
 
   def scan(code)
-    @basket[code] ? @basket[code] += 1 : @basket[code] = 1
+    @basket[code] += 1
   end
 
   def total
     cost = 0
-    @catalogue.each do |item|
-      cost += item.price * @basket[item.code]
+    @basket.each do |item, amount|
+      @catalogue.each do |product|
+        cost += product.price * amount if product.code == item
+      end
     end
     cost / 100.00
   end
