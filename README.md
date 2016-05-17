@@ -19,7 +19,7 @@ A Ruby checkout system taking a catalogue of items and various promotional disco
 - Run tests with RSpec
 
   `$ rspec`
----
+
 ## Operating Instructions
 
 - Load the system into PRY using the Rakefile
@@ -41,7 +41,7 @@ A Ruby checkout system taking a catalogue of items and various promotional disco
 - Calculate total
 
   `co.total` => £54.25
-----
+  
 ## System Design
 
 The system is made up of five classes
