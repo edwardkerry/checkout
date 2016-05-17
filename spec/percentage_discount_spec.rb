@@ -6,16 +6,18 @@ describe PercentageDiscount do
     it 'set an upper limit' do
       expect(discount.upper_limit).to eq(6000)
     end
+
     it 'set a discount percentage' do
       expect(discount.percent).to eq(10)
     end
   end
 
   describe "#calculate_discount" do
-    it 'reduces a number over the upper_limit by the percentage' do
+    it 'returns discount percentage of sum over upper limit' do
       expect(discount.calculate_discount(10000)).to eq(1000)
     end
-    it 'does not reduce a number under the upper_limit' do
+
+    it 'returns 0 if sum is under the upper_limit' do
       expect(discount.calculate_discount(6000)).to eq(0)
     end
   end

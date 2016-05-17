@@ -11,12 +11,14 @@ describe Checkout do
       co.scan('001')
       expect(co.basket).to eq({'001' => 1})
     end
+
     it 'adds multiple items to the basket' do
       co.scan('001')
       co.scan('002')
       co.scan('001')
       expect(co.basket).to eq({'001' => 2, '002' => 1})
     end
+
     it 'only accepts valid items' do
       expect{co.scan('bad_code')}.to raise_error('Unknown item code')
     end

@@ -31,7 +31,7 @@ class PromotionalRule
   end
 
   def apply_percentage_discount(total)
-    @percent_rule ? @percent_rule.calculate_discount(total) : total
+    @percent_rule ? @percent_rule.calculate_discount(total) : 0
   end
 
 end

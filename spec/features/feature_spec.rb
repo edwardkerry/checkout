@@ -39,5 +39,5 @@ describe 'Feature test' do
       expect(co.total).to eq(73.76)
     end
   end
-
+  
 end
