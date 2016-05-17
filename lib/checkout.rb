@@ -14,7 +14,7 @@ class Checkout
   end
 
   def total
-    ((price_of_order - discounts) / 100.00).round(2)
+    "£#{((price_of_order - discounts) / 100.00).round(2)}"
   end
 
   private
@@ -32,7 +32,6 @@ class Checkout
 
   def price_of_order
     basket.reduce(0) do |price, (item, amount)|
-      catalogue_codes_with_prices[item] * amount
       price += catalogue_codes_with_prices[item] * amount
     end
   end

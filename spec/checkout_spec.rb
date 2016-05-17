@@ -28,7 +28,7 @@ describe Checkout do
     it 'returns the cost of a standard basket' do
       co.scan('001')
       co.scan('002')
-      expect(co.total).to eq(54.25)
+      expect(co.total).to eq("£54.25")
     end
   end
 
