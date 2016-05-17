@@ -29,13 +29,13 @@ The system was test-driven using Rspec. All classes are unit-tested and isolated
 ###### Automated loading
 - Load the system into PRY using the Rakefile
 
-  `rake`
+  `$ rake`
 
 ###### Manual loading
 
 - Open a REPL such as IRB or PRY
 
-  `$ irb` or `$pry`
+  `$ irb` or `$ pry`
 
 - Require the system files
 
@@ -62,19 +62,19 @@ The system was test-driven using Rspec. All classes are unit-tested and isolated
 
 - Create an instance of the checkout
 
-  `co = Checkout.new(catalogue, promo_rule)`
+  `$ co = Checkout.new(catalogue, promo_rule)`
 
 - Scan item codes '001', '002' and '003', e.g
 
-    `co.scan('001')` => 1
+    `$ co.scan('001')` => 1
 
-    `co.scan('002')` => 1
+    `$ co.scan('002')` => 1
 
-    `co.scan('004')` => RuntimeError: Unknown item code
+    `$ co.scan('004')` => RuntimeError: Unknown item code
 
 - When ready, calculate the total
 
-  `co.total` => £54.25
+  `$ co.total` => £54.25
 
 ## System Design
 
