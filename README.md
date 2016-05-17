@@ -2,7 +2,9 @@
 
 A Ruby checkout system taking a catalogue of items and various promotional discounts.
 
-## Installation Instructions
+The system was test-driven using Rspec. All classes are unit-tested and isolated using dependency injection, and the overall system is tested with integrated feature tests.
+
+## Installation
 
 - Clone this repository
 
@@ -20,17 +22,49 @@ A Ruby checkout system taking a catalogue of items and various promotional disco
 
   `$ rspec`
 
-## Operating Instructions
+## Instructions
 
+- Load the system (automated or manual)
+
+###### Automated loading
 - Load the system into PRY using the Rakefile
 
-  `rake noths:load_checkout`
+  `rake`
+
+###### Manual loading
+
+- Open a REPL such as IRB or PRY
+
+  `$ irb` or `$pry`
+
+- Require the system files
+
+  ```
+  $ require_relative 'lib/item'
+  $ require_relative 'lib/promotional_rule'
+  $ require_relative 'lib/discounts/percentage_discount'
+  $ require_relative 'lib/discounts/multibuy_discount'
+  $ require_relative 'lib/checkout'
+  ```
+- Create the necessary class instances, e.g:
+  ```
+  $ Item.new('001', 'Travel Card Holder', 925)
+  $ Item.new('002', 'Personalised Cufflinks', 4500)
+  $ Item.new('003', 'Kids T-shirt', 1995)
+  $ catalogue = Item
+
+  $ promo_rule = PromotionalRule.new(PercentageDiscount, MultibuyDiscount)
+  $ promo_rule.set_percentage_discount(6000, 10)
+  $ promo_rule.set_multibuy_discount('001', 2, 75)
+  ```
+
+### Operating instructions
 
 - Create an instance of the checkout
 
   `co = Checkout.new(catalogue, promo_rule)`
 
-- Scan item codes 001, 002 and 003
+- Scan item codes '001', '002' and '003', e.g
 
     `co.scan('001')` => 1
 
@@ -38,16 +72,16 @@ A Ruby checkout system taking a catalogue of items and various promotional disco
 
     `co.scan('004')` => RuntimeError: Unknown item code
 
-- Calculate total
+- When ready, calculate the total
 
   `co.total` => £54.25
-  
+
 ## System Design
 
 The system is made up of five classes
 * `Item`
   - Item instances represent products to be sold in the marketplace.
-  - new Items take a code, a name and a price.
+  - New Items take a code, a name and a price.
   - In lieu of a database, items are currently stored in an array held as a class variable `catalogue`.
 
 
@@ -63,5 +97,5 @@ The system is made up of five classes
 
 * `Checkout`
  - Checkout is the public interface to the system.
- - Checkout is instantiated taking instances of Item and PromotionalRule as arguments.
+ - Checkout is instantiated taking an instance of PromotionalRule and the Item class as arguments.
  - Checkout will store scanned items, and upon the `total` method being called, pass the total cost and current order to PromotionalRule for discounts to be calculated.        
